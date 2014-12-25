@@ -21,6 +21,7 @@ def assign():
 	location = flask.request.form['location']
 	if not location or ':' not in location:
 		flask.abort(400)
+	global destination
 	destination = location
 	return flask.render_template('assigned.html', location=location)
 
@@ -33,4 +34,4 @@ def extract():
 	return flask.render_template('extracted.html', result=result)
 
 port = int(os.environ.get('PORT', '5000'))
-app.run(host='0.0.0.0', port=port, debug=True)
+app.run(host='0.0.0.0', port=port)
