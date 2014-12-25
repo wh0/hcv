@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% if result['url'] %}
+	{% if result['title'] %}
+		<p class="title">{{ result['title'] }}</p>
+	{% else %}
+		<p class="no-title">(no title)</p>
+	{% endif %}
+	<form class="assign" method="POST" action="/assign">
+		<p><input type="text" name="location" value="{{ result['url'] }}"></p>
+		<p><input type="submit" value="assign"></p>
+	</form>
+{% else %}
+	<p class="no-url">no URL available</p>
+{% endif %}
+<pre class="result">{{ result|tojson }}</pre>
+{% endblock %}

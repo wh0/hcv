@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form class="assign" method="POST" action="/assign">
+	<p><input type="text" name="location"></p>
+	<p><input type="submit" value="assign"></p>
+</form>
+<form class="extract" method="GET" action="/extract">
+	<p><input type="text" name="location"></p>
+	<p><input type="submit" value="extract"></p>
+</form>
+{% endblock %}
