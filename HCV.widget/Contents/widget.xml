@@ -1,0 +1,12 @@
+<metadata>
+	<name>Hardcoded Video</name>
+	<version>0.0.4</version>
+	<identifier>w.hcv</identifier>
+	<platform minVersion="5.0" />
+	<security>
+		<filesystem>full</filesystem>
+		<command>true</command>
+		<http>all</http>
+	</security>
+</metadata>
+
