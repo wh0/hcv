@@ -1,4 +1,6 @@
+import json
 import os
+import traceback
 
 import flask
 import youtube_dl
@@ -30,8 +32,12 @@ def extract():
 	location = flask.request.args['location']
 	if not location or ':' not in location:
 		flask.abort(400)
-	result = ydl.extract_info(location, download=False)
-	return flask.render_template('extracted.html', result=result)
+	try:
+		result = ydl.extract_info(location, download=False)
+	except Exception, e:
+		app.log_exception(e)
+		return flask.render_template('not-extracted.html', formatted_exc=traceback.format_exc())
+	return flask.render_template('extracted.html', result=result, formatted_result=json.dumps(result, indent=2))
 
 port = int(os.environ.get('PORT', '5000'))
 app.run(host='0.0.0.0', port=port)
