@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
+<p class="version">{{ version }}</p>
 {% if result['url'] %}
 	{% if result['title'] %}
 		<p class="title">{{ result['title'] }}</p>
