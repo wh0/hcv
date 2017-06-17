@@ -40,5 +40,10 @@ def extract():
 		return flask.render_template('not-extracted.html', version=ydl_ver, formatted_exc=str(e)), 500
 	return flask.render_template('extracted.html', version=ydl_ver, result=result, formatted_result=json.dumps(result, indent=2))
 
+@app.route('/up')
+def up():
+	flask.request.environ.get('werkzeug.server.shutdown')()
+	return 'restarting'
+
 port = int(os.environ.get('PORT', '5000'))
 app.run(host='0.0.0.0', port=port)
