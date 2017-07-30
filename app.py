@@ -33,7 +33,7 @@ def extract():
 	if not location or ':' not in location:
 		flask.abort(400)
 	try:
-		ydl = youtube_dl.YoutubeDL(params={'no_color': True})
+		ydl = youtube_dl.YoutubeDL(params={'no_color': True, 'format': 'mp4'})
 		result = ydl.extract_info(location, download=False)
 	except Exception, e:
 		app.log_exception(e)
